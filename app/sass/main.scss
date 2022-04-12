@@ -1,0 +1,220 @@
+//
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+// Переменные для работы со шрифтами
+$ffamily: "Comfortaa", cursive;
+$fs-base: 18px;
+$weight-light: 300;
+$weight-medium: 400;
+$weight-bold: 500;
+// Радиус скругления
+$bradius: 1rem;
+// Цвета
+$blueSoft: hsl(195, 74%, 62%);
+$blueDark: hsl(235, 46%, 20%);
+$blueVeryDark: hsl(226, 43%, 10%);
+$blueDesaturated: hsl(235, 45%, 61%);
+$bluePale: hsl(236, 100%, 87%);
+$blueDefault: hsl(246, 80%, 60%);
+$redLightFirst: hsl(15, 100%, 70%);
+$redLightSecond: hsl(348, 100%, 68%);
+$greenLime: hsl(145, 58%, 55%);
+$violet: hsl(264, 64%, 52%);
+$orangeSoft: hsl(43, 84%, 65%);
+
+body {
+	margin: 0;
+	background-color: $blueVeryDark;
+	font-family: $ffamily;
+	font-size: $fs-base;
+	font-weight: $weight-light;
+	color: white;
+	min-height: 100vh;
+}
+header {
+	text-align: center;
+	font-size: 2rem;
+	padding: 0.5rem;;
+}
+.board {
+	padding: 4rem 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.board__content {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	display: grid;
+	gap: 1.5rem;
+	justify-content: center;
+	grid-template-columns: repeat(1, minmax(300px, 330px));
+}
+.board__person {
+	width: 100%;
+	background-color: $blueDark;
+	border-radius: $bradius;
+}
+.card-info {
+	background-color: $blueDefault;
+	border-radius: $bradius;
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+.card-info__photo {
+	width: 50px;
+	height: 50px;
+	border: 3px solid white;
+	border-radius: 50%;
+}
+.card-info__text {
+}
+.card-info__subtitle {
+	font-size: 12px;
+}
+.card-info__title {
+	font-weight: $weight-bold;
+	margin: 0.5rem 0 0 0;
+}
+.card-select {
+	padding: 1.25rem 2rem;
+	display: flex;
+	justify-content: space-between;
+}
+.card-select__item {
+	font-size: 12px;
+	color: $bluePale;
+}
+.card-select__item:hover,
+.card-select__item--active {
+	cursor: pointer;
+	color: white;
+}
+.card-select__item--active {
+}
+.board__item {
+	width: 100%;
+	padding-top: 2.15rem;
+	background-color: white;
+	border-radius: $bradius;
+	background-repeat: no-repeat;
+	background-position: 92% -15%;
+	display: flex;
+	align-items: flex-end;
+}
+.board__item--work {
+	background-color: $redLightFirst;
+	background-image: url(../images/icon-work.svg);
+}
+.board__item--play {
+	background-color: $blueSoft;
+	background-image: url(../images/icon-play.svg);
+}
+.board__item--study {
+	background-color: $redLightSecond;
+	background-image: url(../images/icon-study.svg);
+}
+.board__item--exercise {
+	background-color: $greenLime;
+	background-image: url(../images/icon-exercise.svg);
+}
+.board__item--social {
+	background-color: $violet;
+	background-image: url(../images/icon-social.svg);
+}
+.board__item--selfcare {
+	background-color: $orangeSoft;
+	background-image: url(../images/icon-self-care.svg);
+}
+.card-tracking {
+	background-color: $blueDark;
+	border-radius: $bradius;
+	width: 100%;
+	padding: 1.25rem;
+	position: relative;
+	bottom: -2px;
+}
+.board__item:hover .card-tracking {
+	background-color: $blueDesaturated;
+}
+.card-tracking__header,
+.card-tracking__body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.card-tracking__title {
+	font-size: $fs-base;
+	font-weight: $weight-medium;
+}
+.card-tracking__menubtn {
+	cursor: pointer;
+}
+.card-tracking__body {
+}
+.card-tracking__time {
+	font-size: 32px;
+	font-weight: $weight-light;
+}
+.card-tracking__prev {
+	font-size: 12px;
+	color: $bluePale;
+}
+
+@media (min-width: 1024px) {
+	.board__content {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.board__person {
+		grid-row-start: 1;
+		grid-row-end: 3;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.card-info {
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-grow: 1;
+	}
+	.card-info__photo {
+		margin-bottom: 1rem;
+	}
+	.card-info__title {
+		font-size: 22px;
+	}
+	.card-select {
+		flex-direction: column;
+	}
+	.card-select__item:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+	.card-tracking__body {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.card-tracking__time {
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		font-size: 36px;
+	}
+}
